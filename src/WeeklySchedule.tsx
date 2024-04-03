@@ -24,8 +24,6 @@ interface IWeekTurns {
 
 function TurnObject({ turn }: { turn: ITurn }) {
 
-    const date_str = turn.start_time.split(' ')[0]; // "2024-02-26"
-
     // Convert string "2024-02-26 10:00:00" to time string "10:00"
     const start_time = new Date(turn.start_time);
     const start_time_str = start_time.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
@@ -45,14 +43,16 @@ function TurnObject({ turn }: { turn: ITurn }) {
 
     const style = {
         top: `${position_start}%`,
-        height: `${position_end - position_start}%`,
-        width: '100%',
-        backgroundColor: 'lightblue',
-        border: '1px solid black'
+        height: `${position_end - position_start}%`
     }
 
+    let turn_class = 'turn';
+    if (turn.user_id === '') {
+        turn_class += ' free';
+    }
+    
     return (
-        <div className="turn" style={style}>
+        <div className={turn_class} style={style}>
             <p className='time'>{start_time_str} - {end_time_str}</p>
             <p className='user'>{turn.user_id}</p>
         </div>
@@ -60,13 +60,62 @@ function TurnObject({ turn }: { turn: ITurn }) {
 }
 
 
-function process_day_turns(day_turns_list: ITurn[]) {
+function calculate_used_modules(turn: ITurn): number[] {
 
-    if (day_turns_list === undefined || day_turns_list.length === 0) {
-        return [];
-    }
+    // Get round hours involved in turn
+    const start_time = new Date(turn.start_time);
+    const end_time = new Date(turn.end_time);
 
-    const turns_objects = day_turns_list.map((turn) => {
+    const start_hour = start_time.getHours();
+    const end_hour = end_time.getHours();
+
+    const used_modules = Array.from({ length: end_hour - start_hour }, (_, i) => i + start_hour);
+
+    return used_modules;
+}
+
+
+function calculate_all_used_modules(day_turns: IDayTurns): number[] {
+    let all_used_modules: number[] = [];
+
+    day_turns.turns.forEach((turn) => {
+        const used_modules = calculate_used_modules(turn);
+        all_used_modules = all_used_modules.concat(used_modules);
+    });
+
+    return all_used_modules;
+}
+
+
+function process_day_turns(day_turns: IDayTurns) {
+
+    const day_start = 8;
+    const day_end = 21;
+    const all_modules = Array.from({ length: day_end - day_start }, (_, i) => i + day_start);
+    const all_used_modules = calculate_all_used_modules(day_turns);
+
+    const free_modules = all_modules.filter((module) => !all_used_modules.includes(module));
+    const free_turns: ITurn[] = free_modules.map((module) => {
+        // Create start time with date as "dd.mm.yyyy" and time as 10
+        const date_parts = day_turns.date.split('.');
+        const start_time = new Date(Number(date_parts[2]), Number(date_parts[1]) - 1, Number(date_parts[0]));
+        start_time.setHours(module);
+
+        const end_time = new Date(Number(date_parts[2]), Number(date_parts[1]) - 1, Number(date_parts[0]));
+        end_time.setHours(module + 1);
+
+        return {
+            idx: '',
+            start_time: start_time.toISOString(),
+            end_time: end_time.toISOString(),
+            user_id: '',
+            office_id: ''
+        }
+    });
+
+    const all_turns: ITurn[] = day_turns.turns.concat(free_turns);
+
+    const turns_objects = all_turns.map((turn) => {
         return <TurnObject turn={turn} />;
     });
 
@@ -87,7 +136,7 @@ export function WeekDay({ day_name, day_turns }: { day_name: string, day_turns: 
             <p className='date'>{formatted_date}</p>
             <h2>{capitalized_day_name}</h2>
             <div className="turns">
-                {process_day_turns(day_turns.turns)}
+                {process_day_turns(day_turns)}
             </div>
         </div>
     )

@@ -20,9 +20,11 @@
 
 .turn {
   padding: 10px;
-  border: 1px solid #ccc;
   box-sizing: border-box;
   position: absolute;
+  width: 100%;
+  background-color: lightblue;
+  border: 1px solid black;
 }
 
 .date {
@@ -39,4 +41,8 @@
 .user {
   margin-top: 4px;
   margin-bottom: 0px;
+}
+
+.free {
+  background-color: lightgray;
 }
