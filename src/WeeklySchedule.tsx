@@ -24,14 +24,37 @@ interface IWeekTurns {
 
 function TurnObject({ turn }: { turn: ITurn }) {
 
+    const date_str = turn.start_time.split(' ')[0]; // "2024-02-26"
+
     // Convert string "2024-02-26 10:00:00" to time string "10:00"
-    const start_time = new Date(turn.start_time).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-    const end_time = new Date(turn.end_time).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    const start_time = new Date(turn.start_time);
+    const start_time_str = start_time.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+
+    const end_time = new Date(turn.end_time);
+    const end_time_str = end_time.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+
+    const time_range = 21 - 8; // 13 hours
+
+    // Start time as hours integer
+    const start_time_hours = start_time.getHours();
+    const position_start = (start_time_hours - 8) * 100 / time_range;
+
+    // End time as hours integer
+    const end_time_hours = end_time.getHours();
+    const position_end = (end_time_hours - 8) * 100 / time_range;
+
+    const style = {
+        top: `${position_start}%`,
+        height: `${position_end - position_start}%`,
+        width: '100%',
+        backgroundColor: 'lightblue',
+        border: '1px solid black'
+    }
 
     return (
-        <div className="turn">
-            <p className='time'>{start_time} - {end_time}</p>
-            <p>{turn.user_id}</p>
+        <div className="turn" style={style}>
+            <p className='time'>{start_time_str} - {end_time_str}</p>
+            <p className='user'>{turn.user_id}</p>
         </div>
     )
 }

@@ -19,14 +19,24 @@
   }
 
 .turn {
-  display: block;
   padding: 10px;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  position: absolute;
 }
 
 .date {
   font-size: small;
   font-style: italic;
   text-align: center;
+}
+
+.turns {
+  height: 910px;
+  position: relative;
+}
+
+.user {
+  margin-top: 4px;
+  margin-bottom: 0px;
 }
