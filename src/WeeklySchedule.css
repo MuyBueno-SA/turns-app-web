@@ -1,0 +1,12 @@
+.week_day {
+    display: inline-block;
+    width: 14.2%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-right: -1px;
+    box-sizing: border-box;
+  }
+  .hour {
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+  }
