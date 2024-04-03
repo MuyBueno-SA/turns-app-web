@@ -5,8 +5,28 @@
     padding: 10px;
     margin-right: -1px;
     box-sizing: border-box;
+    vertical-align:top;
   }
-  .hour {
-    border-bottom: 1px solid #ddd;
-    padding: 5px;
+
+.week_day h2 {
+    text-align: center;
   }
+
+.time {
+    font-style: italic;
+    font-size: small;
+    margin: 0;
+  }
+
+.turn {
+  display: block;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.date {
+  font-size: small;
+  font-style: italic;
+  text-align: center;
+}

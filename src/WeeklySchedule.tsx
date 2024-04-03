@@ -23,13 +23,15 @@ interface IWeekTurns {
 
 
 function TurnObject({ turn }: { turn: ITurn }) {
+
+    // Convert string "2024-02-26 10:00:00" to time string "10:00"
+    const start_time = new Date(turn.start_time).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    const end_time = new Date(turn.end_time).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+
     return (
         <div className="turn">
-            <p>{turn.idx}</p>
-            <p>{turn.start_time}</p>
-            <p>{turn.end_time}</p>
+            <p className='time'>{start_time} - {end_time}</p>
             <p>{turn.user_id}</p>
-            <p>{turn.office_id}</p>
         </div>
     )
 }
@@ -51,10 +53,16 @@ function process_day_turns(day_turns_list: ITurn[]) {
 
 
 export function WeekDay({ day_name, day_turns }: { day_name: string, day_turns: IDayTurns }) {
+    const capitalized_day_name = day_name.charAt(0).toUpperCase() + day_name.slice(1);
+
+    // Date as "dd.mm.yyyy" to "26 / 02 / 2024"
+    const date_parts = day_turns.date.split('.');
+    const formatted_date = `${date_parts[0]} / ${date_parts[1]} / ${date_parts[2]}`;
+
     return (
-        <div className="day">
-            <h2>{day_name}</h2>
-            <p>{day_turns.date}</p>
+        <div className="week_day">
+            <p className='date'>{formatted_date}</p>
+            <h2>{capitalized_day_name}</h2>
             <div className="turns">
                 {process_day_turns(day_turns.turns)}
             </div>
