@@ -21,6 +21,14 @@ interface IWeekTurns {
     [key: string]: IDayTurns;
 }
 
+interface IBusinessInfo {
+    name: string;
+    start_time: string;  // "08:00"
+    end_time: string;    // "21:00"
+    min_turn_duration: number; // Minutes
+    offices: string[];
+}
+
 
 function TurnObject({ turn }: { turn: ITurn }) {
 
@@ -33,7 +41,7 @@ function TurnObject({ turn }: { turn: ITurn }) {
 
     const time_range = 21 - 8; // 13 hours
 
-    // Start time as hours integer
+    // Start time as hours integers
     const start_time_hours = start_time.getHours();
     const position_start = (start_time_hours - 8) * 100 / time_range;
 
@@ -44,7 +52,7 @@ function TurnObject({ turn }: { turn: ITurn }) {
     const style = {
         top: `${position_start}%`,
         height: `${position_end - position_start}%`
-    }
+    };
 
     let turn_class = 'turn';
     if (turn.user_id === '') {
@@ -52,7 +60,7 @@ function TurnObject({ turn }: { turn: ITurn }) {
     }
     
     return (
-        <div className={turn_class} style={style}>
+        <div key={turn.idx} className={turn_class} style={style}>
             <p className='time'>{start_time_str} - {end_time_str}</p>
             <p className='user'>{turn.user_id}</p>
         </div>
@@ -124,7 +132,7 @@ function process_day_turns(day_turns: IDayTurns) {
 
 
 
-export function WeekDay({ day_name, day_turns }: { day_name: string, day_turns: IDayTurns }) {
+export function WeekDay({ day_name, day_turns, office }: { day_name: string, day_turns: IDayTurns, office: string }) {
     const capitalized_day_name = day_name.charAt(0).toUpperCase() + day_name.slice(1);
 
     // Date as "dd.mm.yyyy" to "26 / 02 / 2024"
@@ -132,7 +140,7 @@ export function WeekDay({ day_name, day_turns }: { day_name: string, day_turns: 
     const formatted_date = `${date_parts[0]} / ${date_parts[1]} / ${date_parts[2]}`;
 
     return (
-        <div className="week_day">
+        <div key={day_name + "_" + office} className="week_day">
             <p className='date'>{formatted_date}</p>
             <h2>{capitalized_day_name}</h2>
             <div className="turns">
@@ -144,46 +152,94 @@ export function WeekDay({ day_name, day_turns }: { day_name: string, day_turns: 
   }
 
 
+export function OfficeWeekSchedule({ turns, office }: { turns: IWeekTurns, office: string }) {
+    const office_turns: IWeekTurns = {};
+    Object.keys(turns).forEach((key) => {
+        const day_turns = turns[key];
+        const office_day_turns = {
+            date: day_turns.date,
+            turns: day_turns.turns.filter((turn) => turn.office_id === office)
+        };
+        office_turns[key] = office_day_turns;
+    });
+
+    const week_days = Object.keys(office_turns).map((key) => {
+        return <WeekDay office={office} day_name={key} day_turns={office_turns[key]} />
+    });
+
+    // replace "_" with " "
+    const office_name = office.replace(/_/g, ' ');
+    
+    return (
+        
+        <div className="accordion-item">
+            <h2 className="accordion-header">
+                <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    {office_name}
+                </button>
+            </h2>
+            <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div className="accordion-body">
+                    <h2>{office_name}</h2>
+                    {week_days}
+                </div>
+            </div>
+        </div>
+
+    )
+}
+
+
 export default function WeeklySchedule() {
 
     const [data, setData] = React.useState<IWeekTurns | null>(null);
+    const [businessInfo, setBusinessInfo] = React.useState<IBusinessInfo | null>(null);
     const currentDate = new Date();
     const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}.${String(currentDate.getMonth() + 1).padStart(2, '0')}.${currentDate.getFullYear()}`;
 
     useEffect(() => {
 
+        const fetchBusinessInfo = async () => {
+            const response = await axios.get('http://127.0.0.1:5000/business_info');
+            setBusinessInfo(response.data);
+        };
+
         const fetchSchedule = async () => {
 
             const response = await axios.get('http://127.0.0.1:5000/turns/get_week', {
-                params: {
-                    day: "29.02.2024"
-                }
+                params: { day: formattedDate }
             });
-
-            console.log('Data fetched:', response);
             setData(response.data);
         };
 
+        fetchBusinessInfo().catch((error) => {
+            console.error('Error fetching business data:', error);
+        });
         fetchSchedule().catch((error) => {
-            console.error('Error fetching data:', error);
-        }
-        );
+            console.error('Error fetching turns data:', error);
+        });
 
     }, [formattedDate]);
 
-    if (data === null) {
+    if (data === null || businessInfo === null) {
         return <div>Loading...</div>;
     }
+    console.log('Business info fetched:', businessInfo);
+    console.log('Data fetched:', data);
 
-    const week_days = Object.keys(data).map((key) => 
-        <WeekDay key={key} day_name={key} day_turns={data[key]} />
-    );
+    const offices_week_schedules = businessInfo.offices.map((office) => {
+        return (
+            <div className="weekly_schedule acordion" key="accordion">
+                <OfficeWeekSchedule turns={data} office={office}/>
+            </div>
+        );
+    });
 
     return (
         <div className="weekly_schedule">
             <h1>Weekly Schedule</h1>
             <p>{formattedDate}</p>
-            {week_days}
+            {offices_week_schedules}
         </div>
     )
 
