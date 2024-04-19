@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
-import TurnCreation from './TurnCreation';
+import TurnInfoPanel from './Turns/TurnInfoPanel';
 import './WeeklySchedule.css'; // Import your CSS file
+import NewTurnPanel from './Turns/NewTurnPanel';
 
 
-interface INamedUSer {
+export interface INamedUser {
     id: string;
     name: string;
 }
 
-
-interface ITurn {
+export interface ITurn {
     idx: string;
     start_time: string;
     end_time: string;
-    user: INamedUSer;
+    user: INamedUser;
     office_id: string;
 }
 
@@ -30,9 +30,9 @@ interface IWeekTurns {
 
 interface IBusinessInfo {
     name: string;
-    start_time: string;  // "08:00"
-    end_time: string;    // "21:00"
-    min_turn_duration: number; // Minutes
+    start_time: string;         // "08:00"
+    end_time: string;           // "21:00"
+    min_turn_duration: number;  // Minutes
     offices: string[];
 }
 
@@ -73,13 +73,16 @@ function TurnObject({ turn }: { turn: ITurn }) {
     
     return (
         <>
-        <div className={turn_class} key={turn.idx} style={style} onClick={handleShow}>
-            <p className='time'>{start_time_str} - {end_time_str}</p>
-            <p className='user'>{turn.user.name}</p>
-        </div>
-        {
-            turn.user.id === '' ? <TurnCreation show={show} handleClose={handleClose}/> : null
-        }
+            <div className={turn_class} key={turn.idx} style={style} onClick={handleShow}>
+                <p className='time'>{start_time_str} - {end_time_str}</p>
+                <p className='user'>{turn.user.name}</p>
+            </div>
+            {
+                turn.user.id !== '' ? <TurnInfoPanel turn={turn} show={show} handleClose={handleClose}/> : null
+            }
+            {
+                turn.user.id === '' ? <NewTurnPanel start_time={start_time} show={show} handleClose={handleClose}/> : null
+            }
         </>
     )
 }

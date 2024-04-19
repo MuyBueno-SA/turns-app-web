@@ -14,7 +14,7 @@
 
 .time {
     font-style: italic;
-    font-size: small;
+    font-size: 12px;
     margin: 0;
   }
 
@@ -36,11 +36,13 @@
 .turns {
   height: 910px;
   position: relative;
+  cursor: pointer;
 }
 
 .user {
   margin-top: 4px;
   margin-bottom: 0px;
+  font-size: 12px;
 }
 
 .free {
