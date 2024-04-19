@@ -5,11 +5,17 @@ import TurnCreation from './TurnCreation';
 import './WeeklySchedule.css'; // Import your CSS file
 
 
+interface INamedUSer {
+    id: string;
+    name: string;
+}
+
+
 interface ITurn {
     idx: string;
     start_time: string;
     end_time: string;
-    user_id: string;
+    user: INamedUSer;
     office_id: string;
 }
 
@@ -61,7 +67,7 @@ function TurnObject({ turn }: { turn: ITurn }) {
     };
 
     let turn_class = 'turn';
-    if (turn.user_id === '') {
+    if (turn.user.id === '') {
         turn_class += ' free';
     }
     
@@ -69,10 +75,10 @@ function TurnObject({ turn }: { turn: ITurn }) {
         <>
         <div className={turn_class} key={turn.idx} style={style} onClick={handleShow}>
             <p className='time'>{start_time_str} - {end_time_str}</p>
-            <p className='user'>{turn.user_id}</p>
+            <p className='user'>{turn.user.name}</p>
         </div>
         {
-            turn.user_id === '' ? <TurnCreation show={show} handleClose={handleClose}/> : null
+            turn.user.id === '' ? <TurnCreation show={show} handleClose={handleClose}/> : null
         }
         </>
     )
@@ -127,7 +133,7 @@ function process_day_turns(day_turns: IDayTurns) {
             idx: '',
             start_time: start_time.toISOString(),
             end_time: end_time.toISOString(),
-            user_id: '',
+            user: {id: '', name: ''},
             office_id: ''
         }
     });
@@ -205,7 +211,6 @@ export default function WeeklySchedule() {
         };
 
         const fetchSchedule = async () => {
-
             const response = await axios.get('http://127.0.0.1:5000/turns/get_week', {
                 params: { day: formattedDate }
             });
