@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
+import TurnCreation from './TurnCreation';
 import './WeeklySchedule.css'; // Import your CSS file
 
 
@@ -32,6 +33,11 @@ interface IBusinessInfo {
 
 function TurnObject({ turn }: { turn: ITurn }) {
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     // Convert string "2024-02-26 10:00:00" to time string "10:00"
     const start_time = new Date(turn.start_time);
     const start_time_str = start_time.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
@@ -60,10 +66,15 @@ function TurnObject({ turn }: { turn: ITurn }) {
     }
     
     return (
-        <div key={turn.idx} className={turn_class} style={style}>
+        <>
+        <div className={turn_class} key={turn.idx} style={style} onClick={handleShow}>
             <p className='time'>{start_time_str} - {end_time_str}</p>
             <p className='user'>{turn.user_id}</p>
         </div>
+        {
+            turn.user_id === '' ? <TurnCreation show={show} handleClose={handleClose}/> : null
+        }
+        </>
     )
 }
 
@@ -132,7 +143,7 @@ function process_day_turns(day_turns: IDayTurns) {
 
 
 
-export function WeekDay({ day_name, day_turns, office }: { day_name: string, day_turns: IDayTurns, office: string }) {
+function WeekDay({ day_name, day_turns, office }: { day_name: string, day_turns: IDayTurns, office: string }) {
     const capitalized_day_name = day_name.charAt(0).toUpperCase() + day_name.slice(1);
 
     // Date as "dd.mm.yyyy" to "26 / 02 / 2024"
@@ -152,7 +163,7 @@ export function WeekDay({ day_name, day_turns, office }: { day_name: string, day
   }
 
 
-export function OfficeWeekSchedule({ turns, office }: { turns: IWeekTurns, office: string }) {
+function OfficeWeekSchedule({ turns, office }: { turns: IWeekTurns, office: string }) {
     const office_turns: IWeekTurns = {};
     Object.keys(turns).forEach((key) => {
         const day_turns = turns[key];
@@ -171,21 +182,10 @@ export function OfficeWeekSchedule({ turns, office }: { turns: IWeekTurns, offic
     const office_name = office.replace(/_/g, ' ');
     
     return (
-        
-        <div className="accordion-item">
-            <h2 className="accordion-header">
-                <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    {office_name}
-                </button>
-            </h2>
-            <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                <div className="accordion-body">
-                    <h2>{office_name}</h2>
-                    {week_days}
-                </div>
-            </div>
-        </div>
-
+        <>
+            <h2>{office_name}</h2>
+            {week_days}
+        </>
     )
 }
 
@@ -227,19 +227,19 @@ export default function WeeklySchedule() {
     console.log('Business info fetched:', businessInfo);
     console.log('Data fetched:', data);
 
-    const offices_week_schedules = businessInfo.offices.map((office) => {
-        return (
-            <div className="weekly_schedule acordion" key="accordion">
-                <OfficeWeekSchedule turns={data} office={office}/>
-            </div>
-        );
-    });
-
     return (
         <div className="weekly_schedule">
             <h1>Weekly Schedule</h1>
             <p>{formattedDate}</p>
-            {offices_week_schedules}
+            {
+                businessInfo.offices.map((office) => 
+                    (
+                        <div className="weekly_schedule">
+                            <OfficeWeekSchedule turns={data} office={office}/>
+                        </div>
+                    )
+                )      
+            }
         </div>
     )
 
