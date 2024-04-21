@@ -115,7 +115,7 @@ function calculate_all_used_modules(day_turns: IDayTurns): number[] {
 }
 
 
-function process_day_turns(day_turns: IDayTurns) {
+function process_day_turns(day_turns: IDayTurns, office: string) {
 
     const day_start = 8;
     const day_end = 21;
@@ -137,7 +137,7 @@ function process_day_turns(day_turns: IDayTurns) {
             start_time: start_time.toISOString(),
             end_time: end_time.toISOString(),
             user: {id: '', name: ''},
-            office_id: ''
+            office_id: office
         }
     });
 
@@ -164,7 +164,7 @@ function WeekDay({ day_name, day_turns, office }: { day_name: string, day_turns:
             <p className='date'>{formatted_date}</p>
             <h2>{capitalized_day_name}</h2>
             <div className="turns">
-                {process_day_turns(day_turns)}
+                {process_day_turns(day_turns, office)}
             </div>
         </div>
     )

@@ -1,11 +1,10 @@
 import { Offcanvas } from "react-bootstrap";
 import { ITurn } from "../WeeklySchedule";
-import UserInfo from "../Users";
+import { GenerateUserInfo } from "./Users";
 
 
 // handleClose is a function that will be called when the offcanvas is closed
 export default function TurnInfoPanel({turn, show, handleClose}: {turn: ITurn, show: boolean, handleClose: () => void}){
-
 
     // Day as string Monday, 17 of February 2024
     const day = new Date(turn.start_time).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
@@ -18,7 +17,6 @@ export default function TurnInfoPanel({turn, show, handleClose}: {turn: ITurn, s
     const total_hours = new Date(turn.end_time).getHours() - new Date(turn.start_time).getHours();
     const total_hours_str = total_hours === 1 ? "hour" : "hours";
 
-
     return (
         <>
         <Offcanvas show={show} onHide={handleClose} placement="end" className="w-50" >
@@ -29,7 +27,7 @@ export default function TurnInfoPanel({turn, show, handleClose}: {turn: ITurn, s
                 <p><b>Office:</b> {turn.office_id}</p>
                 <p><b>Day:</b> {day}</p>
                 <p><b>Time range:</b> {start_time} - {end_time} ( {total_hours} {total_hours_str} )</p>
-                <UserInfo namedUser={turn.user} />
+                <GenerateUserInfo namedUser={turn.user} />
             </Offcanvas.Body>
         </Offcanvas>
         </>

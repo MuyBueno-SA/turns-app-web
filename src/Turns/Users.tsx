@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 
+
 export interface INamedUser {
     id: string;
     name: string;
@@ -15,8 +16,12 @@ export interface IUser {
     activity: string;
 }
 
+export interface IUsersList {
+    users: IUser[];
+}
 
-export default function UserInfo({namedUser}: {namedUser: INamedUser}) {
+
+export function GenerateUserInfo({namedUser}: {namedUser: INamedUser}) {
     const [user, setUser] = useState<IUser | null>(null);
 
     useEffect(() => {
@@ -38,6 +43,16 @@ export default function UserInfo({namedUser}: {namedUser: INamedUser}) {
 
     return (
         <>
+        <UserInfo user={user} />
+        </>
+    );
+}
+
+
+export default function UserInfo({user}: {user: IUser}) {
+
+    return (
+        <>
         <Card style={{ width: '18rem' }}>
             <Card.Body>
                 <Card.Title>{user.name}</Card.Title>
@@ -52,5 +67,3 @@ export default function UserInfo({namedUser}: {namedUser: INamedUser}) {
         </>
     );
 }
-
-
