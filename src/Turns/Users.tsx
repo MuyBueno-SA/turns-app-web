@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 
 
-export interface INamedUser {
+export type INamedUser = {
     id: string;
     name: string;
 }
 
-export interface IUser {
+export type IUser = {
     id: string;
     name: string;
     email: string;
@@ -16,36 +16,23 @@ export interface IUser {
     activity: string;
 }
 
-export interface IUsersList {
+export type IUsersList = {
     users: IUser[];
 }
 
+export type IUsersDict = {
+    [id: string]: IUser;
+  }
 
-export function GenerateUserInfo({namedUser}: {namedUser: INamedUser}) {
-    const [user, setUser] = useState<IUser | null>(null);
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            const response = await axios.get('http://127.0.0.1:5000/users/get_user', {
-                params: { id: namedUser.id }
-            });
-            setUser(response.data);
-        };
+export function get_users_dict(users: IUser[]): IUsersDict {
 
-        fetchUser().catch((error) => {
-            console.error('Error fetching user data:', error);
-        });
-    }, []);
+    var users_dict: { [id: string]: IUser } = {};
+    users.forEach((user) => {
+        users_dict[user.id] = user;
+    });
 
-    if (user === null) {
-        return <div>Loading User...</div>;
-    }
-
-    return (
-        <>
-        <UserInfo user={user} />
-        </>
-    );
+    return users_dict;
 }
 
 

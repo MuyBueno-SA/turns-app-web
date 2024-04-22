@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import TurnInfoPanel from './Turns/TurnInfoPanel';
 import './WeeklySchedule.css'; // Import your CSS file
 import NewTurnPanel from './Turns/NewTurnPanel';
+import { businessInfoContext } from './App';
 
 
 export interface INamedUser {
@@ -26,14 +27,6 @@ interface IDayTurns {
 
 interface IWeekTurns {
     [key: string]: IDayTurns;
-}
-
-interface IBusinessInfo {
-    name: string;
-    start_time: string;         // "08:00"
-    end_time: string;           // "21:00"
-    min_turn_duration: number;  // Minutes
-    offices: string[];
 }
 
 
@@ -202,16 +195,11 @@ function OfficeWeekSchedule({ turns, office }: { turns: IWeekTurns, office: stri
 export default function WeeklySchedule() {
 
     const [data, setData] = React.useState<IWeekTurns | null>(null);
-    const [businessInfo, setBusinessInfo] = React.useState<IBusinessInfo | null>(null);
+    const business_info = useContext(businessInfoContext);
     const currentDate = new Date();
     const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}.${String(currentDate.getMonth() + 1).padStart(2, '0')}.${currentDate.getFullYear()}`;
 
     useEffect(() => {
-
-        const fetchBusinessInfo = async () => {
-            const response = await axios.get('http://127.0.0.1:5000/business_info');
-            setBusinessInfo(response.data);
-        };
 
         const fetchSchedule = async () => {
             const response = await axios.get('http://127.0.0.1:5000/turns/get_week', {
@@ -220,19 +208,16 @@ export default function WeeklySchedule() {
             setData(response.data);
         };
 
-        fetchBusinessInfo().catch((error) => {
-            console.error('Error fetching business data:', error);
-        });
         fetchSchedule().catch((error) => {
             console.error('Error fetching turns data:', error);
         });
 
     }, [formattedDate]);
 
-    if (data === null || businessInfo === null) {
-        return <div>Loading...</div>;
+    if (data === null) {
+        return <div>Loading schedule...</div>;
     }
-    console.log('Business info fetched:', businessInfo);
+
     console.log('Data fetched:', data);
 
     return (
@@ -240,7 +225,7 @@ export default function WeeklySchedule() {
             <h1>Weekly Schedule</h1>
             <p>{formattedDate}</p>
             {
-                businessInfo.offices.map((office) => 
+                business_info.business.offices.map((office) => 
                     (
                         <div className="weekly_schedule">
                             <OfficeWeekSchedule turns={data} office={office}/>
