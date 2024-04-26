@@ -30,6 +30,12 @@ interface IWeekTurns {
 }
 
 
+// Convert string "2024-02-26 10:00:00" to time integer 10
+export function timeHoursAsInt(time: string): number {
+    return parseInt(time.split(' ')[1].split(':')[0]);
+}
+
+
 function TurnObject({ turn }: { turn: ITurn }) {
 
     const [show, setShow] = useState(false);
@@ -74,7 +80,7 @@ function TurnObject({ turn }: { turn: ITurn }) {
                 turn.user.id !== '' ? <TurnInfoPanel turn={turn} show={show} handleClose={handleClose}/> : null
             }
             {
-                turn.user.id === '' ? <NewTurnPanel start_time={start_time} show={show} handleClose={handleClose}/> : null
+                turn.user.id === '' ? <NewTurnPanel turn={turn} show={show} handleClose={handleClose}/> : null
             }
         </>
     )
@@ -108,6 +114,14 @@ function calculate_all_used_modules(day_turns: IDayTurns): number[] {
 }
 
 
+// Convert date to string "2024-02-26 10:00:00"
+function format_date( date: Date ): string {
+    const formatted_date: string = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
+    return formatted_date;
+}
+
+
+
 function process_day_turns(day_turns: IDayTurns, office: string) {
 
     const day_start = 8;
@@ -127,8 +141,8 @@ function process_day_turns(day_turns: IDayTurns, office: string) {
 
         return {
             idx: '',
-            start_time: start_time.toISOString(),
-            end_time: end_time.toISOString(),
+            start_time: format_date( start_time ),
+            end_time: format_date( end_time ),
             user: {id: '', name: ''},
             office_id: office
         }
@@ -164,6 +178,10 @@ function WeekDay({ day_name, day_turns, office }: { day_name: string, day_turns:
     
   }
 
+export function get_office_name(office_id: string): string {
+    return office_id.replace(/_/g, ' ');
+} 
+
 
 function OfficeWeekSchedule({ turns, office }: { turns: IWeekTurns, office: string }) {
     const office_turns: IWeekTurns = {};
@@ -180,8 +198,7 @@ function OfficeWeekSchedule({ turns, office }: { turns: IWeekTurns, office: stri
         return <WeekDay office={office} day_name={key} day_turns={office_turns[key]} />
     });
 
-    // replace "_" with " "
-    const office_name = office.replace(/_/g, ' ');
+    const office_name = get_office_name(office);
     
     return (
         <>
