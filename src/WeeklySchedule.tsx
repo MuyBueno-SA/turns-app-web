@@ -5,6 +5,7 @@ import TurnInfoPanel from './Turns/TurnInfoPanel';
 import './WeeklySchedule.css'; // Import your CSS file
 import NewTurnPanel from './Turns/NewTurnPanel';
 import { businessInfoContext } from './App';
+import { Accordion } from 'react-bootstrap';
 
 
 export interface INamedUser {
@@ -202,8 +203,12 @@ function OfficeWeekSchedule({ turns, office }: { turns: IWeekTurns, office: stri
     
     return (
         <>
-            <h2>{office_name}</h2>
-            {week_days}
+        <Accordion.Item eventKey={office}>
+            <Accordion.Header>{office_name}</Accordion.Header>
+                <Accordion.Body>
+                    {week_days}
+                </Accordion.Body>
+        </Accordion.Item>
         </>
     )
 }
@@ -241,6 +246,7 @@ export default function WeeklySchedule() {
         <div className="weekly_schedule">
             <h1>Weekly Schedule</h1>
             <p>{formattedDate}</p>
+            <Accordion>
             {
                 business_info.business.offices.map((office) => 
                     (
@@ -250,6 +256,7 @@ export default function WeeklySchedule() {
                     )
                 )      
             }
+            </Accordion>
         </div>
     )
 
