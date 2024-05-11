@@ -1,0 +1,437 @@
+{
+    "monday": {
+        "turns": [
+            {
+                "idx": "TURN-06.05.2024-20.00-Consultorio_4",
+                "start_time": "2024-05-06 20:00:00",
+                "end_time": "2024-05-06 21:00:00",
+                "user": {
+                    "id": "USER_02",
+                    "name": "Federico Bogado"
+                },
+                "office_id": "Consultorio_4"
+            },
+            {
+                "idx": "TURN-06.05.2024-12.00-Consultorio_4",
+                "start_time": "2024-05-06 12:00:00",
+                "end_time": "2024-05-06 13:00:00",
+                "user": {
+                    "id": "USER_02",
+                    "name": "Federico Bogado"
+                },
+                "office_id": "Consultorio_4"
+            },
+            {
+                "idx": "TURN-06.05.2024-14.00-Consultorio_4",
+                "start_time": "2024-05-06 14:00:00",
+                "end_time": "2024-05-06 16:00:00",
+                "user": {
+                    "id": "USER_02",
+                    "name": "Federico Bogado"
+                },
+                "office_id": "Consultorio_4"
+            },
+            {
+                "idx": "TURN-06.05.2024-11.00-Consultorio_2",
+                "start_time": "2024-05-06 11:00:00",
+                "end_time": "2024-05-06 15:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_2"
+            },
+            {
+                "idx": "TURN-06.05.2024-20.00-Consultorio_3",
+                "start_time": "2024-05-06 20:00:00",
+                "end_time": "2024-05-06 21:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_3"
+            },
+            {
+                "idx": "TURN-06.05.2024-19.00-Consultorio_4",
+                "start_time": "2024-05-06 19:00:00",
+                "end_time": "2024-05-06 20:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_4"
+            }
+        ],
+        "date": "06.05.2024"
+    },
+    "tuesday": {
+        "turns": [
+            {
+                "idx": "TURN-07.05.2024-16.00-Consultorio_2",
+                "start_time": "2024-05-07 16:00:00",
+                "end_time": "2024-05-07 19:00:00",
+                "user": {
+                    "id": "USER_04",
+                    "name": "Susana Horia"
+                },
+                "office_id": "Consultorio_2"
+            },
+            {
+                "idx": "TURN-07.05.2024-16.00-Consultorio_4",
+                "start_time": "2024-05-07 16:00:00",
+                "end_time": "2024-05-07 18:00:00",
+                "user": {
+                    "id": "USER_02",
+                    "name": "Federico Bogado"
+                },
+                "office_id": "Consultorio_4"
+            },
+            {
+                "idx": "TURN-07.05.2024-10.00-Consultorio_4",
+                "start_time": "2024-05-07 10:00:00",
+                "end_time": "2024-05-07 13:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_4"
+            },
+            {
+                "idx": "TURN-07.05.2024-17.00-Consultorio_3",
+                "start_time": "2024-05-07 17:00:00",
+                "end_time": "2024-05-07 21:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_3"
+            }
+        ],
+        "date": "07.05.2024"
+    },
+    "wednesday": {
+        "turns": [
+            {
+                "idx": "TURN-08.05.2024-09.00-Consultorio_1",
+                "start_time": "2024-05-08 09:00:00",
+                "end_time": "2024-05-08 11:00:00",
+                "user": {
+                    "id": "USER_02",
+                    "name": "Federico Bogado"
+                },
+                "office_id": "Consultorio_1"
+            },
+            {
+                "idx": "TURN-08.05.2024-16.00-Consultorio_3",
+                "start_time": "2024-05-08 16:00:00",
+                "end_time": "2024-05-08 18:00:00",
+                "user": {
+                    "id": "USER_02",
+                    "name": "Federico Bogado"
+                },
+                "office_id": "Consultorio_3"
+            },
+            {
+                "idx": "TURN-08.05.2024-10.00-Consultorio_2",
+                "start_time": "2024-05-08 10:00:00",
+                "end_time": "2024-05-08 14:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_2"
+            },
+            {
+                "idx": "TURN-08.05.2024-19.00-Consultorio_1",
+                "start_time": "2024-05-08 19:00:00",
+                "end_time": "2024-05-08 21:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_1"
+            },
+            {
+                "idx": "TURN-08.05.2024-19.00-Consultorio_3",
+                "start_time": "2024-05-08 19:00:00",
+                "end_time": "2024-05-08 20:00:00",
+                "user": {
+                    "id": "USER_04",
+                    "name": "Susana Horia"
+                },
+                "office_id": "Consultorio_3"
+            }
+        ],
+        "date": "08.05.2024"
+    },
+    "thursday": {
+        "turns": [
+            {
+                "idx": "TURN-09.05.2024-15.00-Consultorio_4",
+                "start_time": "2024-05-09 15:00:00",
+                "end_time": "2024-05-09 19:00:00",
+                "user": {
+                    "id": "USER_04",
+                    "name": "Susana Horia"
+                },
+                "office_id": "Consultorio_4"
+            },
+            {
+                "idx": "TURN-09.05.2024-09.00-Consultorio_4",
+                "start_time": "2024-05-09 09:00:00",
+                "end_time": "2024-05-09 12:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_4"
+            },
+            {
+                "idx": "TURN-09.05.2024-08.00-Consultorio_1",
+                "start_time": "2024-05-09 08:00:00",
+                "end_time": "2024-05-09 09:00:00",
+                "user": {
+                    "id": "USER_04",
+                    "name": "Susana Horia"
+                },
+                "office_id": "Consultorio_1"
+            },
+            {
+                "idx": "TURN-09.05.2024-18.00-Consultorio_3",
+                "start_time": "2024-05-09 18:00:00",
+                "end_time": "2024-05-09 21:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_3"
+            },
+            {
+                "idx": "TURN-09.05.2024-13.00-Consultorio_3",
+                "start_time": "2024-05-09 13:00:00",
+                "end_time": "2024-05-09 14:00:00",
+                "user": {
+                    "id": "USER_02",
+                    "name": "Federico Bogado"
+                },
+                "office_id": "Consultorio_3"
+            },
+            {
+                "idx": "TURN-09.05.2024-19.00-Consultorio_4",
+                "start_time": "2024-05-09 19:00:00",
+                "end_time": "2024-05-09 21:00:00",
+                "user": {
+                    "id": "USER_02",
+                    "name": "Federico Bogado"
+                },
+                "office_id": "Consultorio_4"
+            },
+            {
+                "idx": "TURN-09.05.2024-11.00-Consultorio_2",
+                "start_time": "2024-05-09 11:00:00",
+                "end_time": "2024-05-09 12:00:00",
+                "user": {
+                    "id": "USER_02",
+                    "name": "Federico Bogado"
+                },
+                "office_id": "Consultorio_2"
+            },
+            {
+                "idx": "TURN-09.05.2024-16.00-Consultorio_1",
+                "start_time": "2024-05-09 16:00:00",
+                "end_time": "2024-05-09 18:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_1"
+            }
+        ],
+        "date": "09.05.2024"
+    },
+    "friday": {
+        "turns": [
+            {
+                "idx": "TURN-10.05.2024-20.00-Consultorio_4",
+                "start_time": "2024-05-10 20:00:00",
+                "end_time": "2024-05-10 21:00:00",
+                "user": {
+                    "id": "USER_04",
+                    "name": "Susana Horia"
+                },
+                "office_id": "Consultorio_4"
+            },
+            {
+                "idx": "TURN-10.05.2024-16.00-Consultorio_2",
+                "start_time": "2024-05-10 16:00:00",
+                "end_time": "2024-05-10 21:00:00",
+                "user": {
+                    "id": "USER_02",
+                    "name": "Federico Bogado"
+                },
+                "office_id": "Consultorio_2"
+            },
+            {
+                "idx": "TURN-10.05.2024-20.00-Consultorio_1",
+                "start_time": "2024-05-10 20:00:00",
+                "end_time": "2024-05-10 21:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_1"
+            },
+            {
+                "idx": "TURN-10.05.2024-13.00-Consultorio_3",
+                "start_time": "2024-05-10 13:00:00",
+                "end_time": "2024-05-10 16:00:00",
+                "user": {
+                    "id": "USER_04",
+                    "name": "Susana Horia"
+                },
+                "office_id": "Consultorio_3"
+            },
+            {
+                "idx": "TURN-10.05.2024-17.00-Consultorio_1",
+                "start_time": "2024-05-10 17:00:00",
+                "end_time": "2024-05-10 20:00:00",
+                "user": {
+                    "id": "USER_04",
+                    "name": "Susana Horia"
+                },
+                "office_id": "Consultorio_1"
+            },
+            {
+                "idx": "TURN-10.05.2024-08.00-Consultorio_2",
+                "start_time": "2024-05-10 08:00:00",
+                "end_time": "2024-05-10 11:00:00",
+                "user": {
+                    "id": "USER_02",
+                    "name": "Federico Bogado"
+                },
+                "office_id": "Consultorio_2"
+            }
+        ],
+        "date": "10.05.2024"
+    },
+    "saturday": {
+        "turns": [
+            {
+                "idx": "TURN-11.05.2024-10.00-Consultorio_1",
+                "start_time": "2024-05-11 10:00:00",
+                "end_time": "2024-05-11 12:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_1"
+            },
+            {
+                "idx": "TURN-11.05.2024-16.00-Consultorio_4",
+                "start_time": "2024-05-11 16:00:00",
+                "end_time": "2024-05-11 17:00:00",
+                "user": {
+                    "id": "USER_04",
+                    "name": "Susana Horia"
+                },
+                "office_id": "Consultorio_4"
+            },
+            {
+                "idx": "TURN-11.05.2024-08.00-Consultorio_2",
+                "start_time": "2024-05-11 08:00:00",
+                "end_time": "2024-05-11 10:00:00",
+                "user": {
+                    "id": "USER_04",
+                    "name": "Susana Horia"
+                },
+                "office_id": "Consultorio_2"
+            },
+            {
+                "idx": "TURN-11.05.2024-18.00-Consultorio_4",
+                "start_time": "2024-05-11 18:00:00",
+                "end_time": "2024-05-11 21:00:00",
+                "user": {
+                    "id": "USER_02",
+                    "name": "Federico Bogado"
+                },
+                "office_id": "Consultorio_4"
+            },
+            {
+                "idx": "TURN-11.05.2024-17.00-Consultorio_2",
+                "start_time": "2024-05-11 17:00:00",
+                "end_time": "2024-05-11 20:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_2"
+            },
+            {
+                "idx": "TURN-11.05.2024-20.00-Consultorio_2",
+                "start_time": "2024-05-11 20:00:00",
+                "end_time": "2024-05-11 21:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_2"
+            },
+            {
+                "idx": "TURN-11.05.2024-14.00-Consultorio_2",
+                "start_time": "2024-05-11 14:00:00",
+                "end_time": "2024-05-11 16:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_2"
+            }
+        ],
+        "date": "11.05.2024"
+    },
+    "sunday": {
+        "turns": [
+            {
+                "idx": "TURN-12.05.2024-11.00-Consultorio_4",
+                "start_time": "2024-05-12 11:00:00",
+                "end_time": "2024-05-12 13:00:00",
+                "user": {
+                    "id": "USER_02",
+                    "name": "Federico Bogado"
+                },
+                "office_id": "Consultorio_4"
+            },
+            {
+                "idx": "TURN-12.05.2024-14.00-Consultorio_4",
+                "start_time": "2024-05-12 14:00:00",
+                "end_time": "2024-05-12 18:00:00",
+                "user": {
+                    "id": "USER_02",
+                    "name": "Federico Bogado"
+                },
+                "office_id": "Consultorio_4"
+            },
+            {
+                "idx": "TURN-12.05.2024-09.00-Consultorio_2",
+                "start_time": "2024-05-12 09:00:00",
+                "end_time": "2024-05-12 13:00:00",
+                "user": {
+                    "id": "USER_04",
+                    "name": "Susana Horia"
+                },
+                "office_id": "Consultorio_2"
+            },
+            {
+                "idx": "TURN-12.05.2024-19.00-Consultorio_4",
+                "start_time": "2024-05-12 19:00:00",
+                "end_time": "2024-05-12 21:00:00",
+                "user": {
+                    "id": "USER_01",
+                    "name": "Virginia D'Espósito"
+                },
+                "office_id": "Consultorio_4"
+            }
+        ],
+        "date": "12.05.2024"
+    }
+}
