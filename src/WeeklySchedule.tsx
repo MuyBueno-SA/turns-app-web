@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
-import axios from 'axios';
 import { useEffect } from 'react';
 import TurnInfoPanel from './Turns/TurnInfoPanel';
 import './WeeklySchedule.css'; // Import your CSS file
 import NewTurnPanel from './Turns/NewTurnPanel';
-import { businessInfoContext } from './App';
+import { businessInfoContext, mockDataService, providerServiceContext } from './App';
 import { Accordion } from 'react-bootstrap';
+import { DataService } from './Singletons/DataService';
+import { DataServiceMock } from './Singletons/Mocks/DataServiceMock';
 
 
 export interface INamedUser {
@@ -218,15 +219,23 @@ export default function WeeklySchedule() {
 
     const [data, setData] = React.useState<IWeekTurns | null>(null);
     const business_info = useContext(businessInfoContext);
+    const providerService = useContext(providerServiceContext);
     const currentDate = new Date();
     const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}.${String(currentDate.getMonth() + 1).padStart(2, '0')}.${currentDate.getFullYear()}`;
 
     useEffect(() => {
 
         const fetchSchedule = async () => {
-            const response = await axios.get('http://127.0.0.1:5000/turns/get_week', {
-                params: { day: formattedDate }
-            });
+            const dataService = providerService.getSingletonInstance({
+                provide: DataService,
+                useClass: mockDataService ? DataServiceMock : DataService
+              });
+
+            const response = await dataService.getWeek();
+            console.log('response week', response.data.monday);
+            // const response = await axios.get('http://127.0.0.1:5000/turns/get_week', {
+            //     params: { day: formattedDate }
+            // });
             setData(response.data);
         };
 
