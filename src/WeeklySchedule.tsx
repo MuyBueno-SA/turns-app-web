@@ -5,7 +5,7 @@ import TurnInfoPanel from './Turns/TurnInfoPanel';
 import './WeeklySchedule.css'; // Import your CSS file
 import NewTurnPanel from './Turns/NewTurnPanel';
 import { businessInfoContext } from './App';
-import { Accordion } from 'react-bootstrap';
+import { Accordion, Tab, Tabs } from 'react-bootstrap';
 
 
 export interface ITurn {
@@ -199,12 +199,7 @@ function OfficeWeekSchedule({ turns, office }: { turns: IWeekTurns, office: stri
 
     return (
         <>
-            <Accordion.Item eventKey={office}>
-                <Accordion.Header>{office_name}</Accordion.Header>
-                <Accordion.Body>
-                    {week_days}
-                </Accordion.Body>
-            </Accordion.Item>
+            {week_days}
         </>
     )
 }
@@ -242,17 +237,18 @@ export default function WeeklySchedule() {
         <div className="weekly_schedule">
             <h1>Weekly Schedule</h1>
             <p>{formattedDate}</p>
-            <Accordion>
+            <Tabs>
                 {
                     business_info.business.offices.map((office) =>
-                    (
+                    (   <Tab  eventKey={office} title={get_office_name(office)}>
                         <div className="weekly_schedule">
                             <OfficeWeekSchedule turns={data} office={office} />
                         </div>
+                        </Tab>
                     )
                     )
                 }
-            </Accordion>
+            </Tabs>
         </div>
     )
 
