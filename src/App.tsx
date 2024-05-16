@@ -45,7 +45,7 @@ class BusinessConfig implements IBusinessConfig {
   }
 }
 
-interface IApiBusinessInfo {
+export interface IApiBusinessInfo {
   business_config: IBusinessConfig;
   users: IUser[];
 }
@@ -75,7 +75,7 @@ function App() {
             });
             
             const response = await dataService.getBussinessInfo();
-            const api_business_info: IApiBusinessInfo = response.data;
+            const api_business_info: IApiBusinessInfo = response;
             const users_dict = get_users_dict(api_business_info.users);
 
             const business_info: IBusinessInfo = {

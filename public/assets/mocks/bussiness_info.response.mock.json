@@ -4,6 +4,7 @@
         "start_time": "08.00",
         "end_time": "21.00",
         "min_module_time": 60,
+        "min_turn_duration": 1,
         "offices": [
             "Consultorio_1",
             "Consultorio_2",

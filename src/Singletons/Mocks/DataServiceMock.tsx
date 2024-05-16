@@ -1,23 +1,18 @@
+import axios from "axios";
+import { IApiBusinessInfo } from "../../App";
 import { IDataService } from "../../Entities/Interfaces/IDataService";
-import * as bussinesInfoResponse from '../../assets/mocks/bussiness_info.response.mock.json';
-import * as weeksResponse from '../../assets/mocks/get_weeks.response.mock.json';
+import { IWeekTurns } from "../../WeeklySchedule";
 
 export class DataServiceMock implements IDataService {
 
-    getWeek(): Promise<any> {
-        const mockedHttpCall = new Promise((resolve, reject) => {
-            resolve({
-                data: weeksResponse
-            })
-        })
+    getWeek(): Promise<IWeekTurns> {
+        const mockedHttpCall = axios.get<IWeekTurns>('./assets/mocks/get_weeks.response.mock.json').then(response => response.data)
+
         return mockedHttpCall;
     }
-    getBussinessInfo(): Promise<any> {
-        const mockedHttpCall = new Promise((resolve, reject) => {
-            resolve({
-                data: bussinesInfoResponse
-            })
-        })
+    getBussinessInfo(): Promise<IApiBusinessInfo> {
+        const mockedHttpCall = axios.get<IApiBusinessInfo>('./assets/mocks/bussiness_info.response.mock.json').then(response => response.data)
+
         return mockedHttpCall;
     }
 

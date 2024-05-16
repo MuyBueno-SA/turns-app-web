@@ -27,7 +27,7 @@ interface IDayTurns {
     turns: ITurn[];
 }
 
-interface IWeekTurns {
+export interface IWeekTurns {
     [key: string]: IDayTurns;
 }
 
@@ -189,6 +189,7 @@ function OfficeWeekSchedule({ turns, office }: { turns: IWeekTurns, office: stri
     const office_turns: IWeekTurns = {};
     Object.keys(turns).forEach((key) => {
         const day_turns = turns[key];
+        console.log('key', key);
         const office_day_turns = {
             date: day_turns.date,
             turns: day_turns.turns.filter((turn) => turn.office_id === office)
@@ -224,7 +225,7 @@ export default function WeeklySchedule() {
     const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}.${String(currentDate.getMonth() + 1).padStart(2, '0')}.${currentDate.getFullYear()}`;
 
     useEffect(() => {
-
+        console.log('date', formattedDate);
         const fetchSchedule = async () => {
             const dataService = providerService.getSingletonInstance({
                 provide: DataService,
@@ -232,11 +233,11 @@ export default function WeeklySchedule() {
               });
 
             const response = await dataService.getWeek();
-            console.log('response week', response.data.monday);
+            
             // const response = await axios.get('http://127.0.0.1:5000/turns/get_week', {
             //     params: { day: formattedDate }
             // });
-            setData(response.data);
+            setData(response);
         };
 
         fetchSchedule().catch((error) => {
