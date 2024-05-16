@@ -1,0 +1,737 @@
+{
+    "monday": {
+        "turns": [
+            {
+                "id": 10,
+                "user_id": 4,
+                "start_time": "2024-05-13T18:00:00Z",
+                "end_time": "2024-05-13T21:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 14,
+                "user_id": 0,
+                "start_time": "2024-05-13T18:00:00Z",
+                "end_time": "2024-05-13T20:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 17,
+                "user_id": 4,
+                "start_time": "2024-05-13T20:00:00Z",
+                "end_time": "2024-05-13T21:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 18,
+                "user_id": 0,
+                "start_time": "2024-05-13T20:00:00Z",
+                "end_time": "2024-05-13T21:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 23,
+                "user_id": 2,
+                "start_time": "2024-05-13T18:00:00Z",
+                "end_time": "2024-05-13T20:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 28,
+                "user_id": 0,
+                "start_time": "2024-05-13T09:00:00Z",
+                "end_time": "2024-05-13T12:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 38,
+                "user_id": 4,
+                "start_time": "2024-05-13T16:00:00Z",
+                "end_time": "2024-05-13T19:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 49,
+                "user_id": 0,
+                "start_time": "2024-05-13T15:00:00Z",
+                "end_time": "2024-05-13T17:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 59,
+                "user_id": 2,
+                "start_time": "2024-05-13T11:00:00Z",
+                "end_time": "2024-05-13T13:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 61,
+                "user_id": 2,
+                "start_time": "2024-05-13T18:00:00Z",
+                "end_time": "2024-05-13T20:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 63,
+                "user_id": 4,
+                "start_time": "2024-05-13T18:00:00Z",
+                "end_time": "2024-05-13T21:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 68,
+                "user_id": 4,
+                "start_time": "2024-05-13T08:00:00Z",
+                "end_time": "2024-05-13T09:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 70,
+                "user_id": 4,
+                "start_time": "2024-05-13T08:00:00Z",
+                "end_time": "2024-05-13T09:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 77,
+                "user_id": 2,
+                "start_time": "2024-05-13T14:00:00Z",
+                "end_time": "2024-05-13T16:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 79,
+                "user_id": 2,
+                "start_time": "2024-05-13T15:00:00Z",
+                "end_time": "2024-05-13T16:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 80,
+                "user_id": 0,
+                "start_time": "2024-05-13T15:00:00Z",
+                "end_time": "2024-05-13T18:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 88,
+                "user_id": 2,
+                "start_time": "2024-05-13T12:00:00Z",
+                "end_time": "2024-05-13T15:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 93,
+                "user_id": 0,
+                "start_time": "2024-05-13T20:00:00Z",
+                "end_time": "2024-05-13T21:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 94,
+                "user_id": 2,
+                "start_time": "2024-05-13T13:00:00Z",
+                "end_time": "2024-05-13T15:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 98,
+                "user_id": 4,
+                "start_time": "2024-05-13T20:00:00Z",
+                "end_time": "2024-05-13T21:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 99,
+                "user_id": 0,
+                "start_time": "2024-05-13T16:00:00Z",
+                "end_time": "2024-05-13T17:00:00Z",
+                "office_id": "Consultorio_3"
+            }
+        ],
+        "date": "26-02-2024"
+    },
+    "tuesday": {
+        "turns": [
+            {
+                "id": 7,
+                "user_id": 0,
+                "start_time": "2024-05-14T12:00:00Z",
+                "end_time": "2024-05-14T14:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 15,
+                "user_id": 4,
+                "start_time": "2024-05-14T19:00:00Z",
+                "end_time": "2024-05-14T21:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 29,
+                "user_id": 4,
+                "start_time": "2024-05-14T10:00:00Z",
+                "end_time": "2024-05-14T13:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 36,
+                "user_id": 0,
+                "start_time": "2024-05-14T18:00:00Z",
+                "end_time": "2024-05-14T21:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 37,
+                "user_id": 4,
+                "start_time": "2024-05-14T18:00:00Z",
+                "end_time": "2024-05-14T21:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 40,
+                "user_id": 4,
+                "start_time": "2024-05-14T13:00:00Z",
+                "end_time": "2024-05-14T16:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 41,
+                "user_id": 0,
+                "start_time": "2024-05-14T09:00:00Z",
+                "end_time": "2024-05-14T13:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 45,
+                "user_id": 4,
+                "start_time": "2024-05-14T19:00:00Z",
+                "end_time": "2024-05-14T21:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 62,
+                "user_id": 4,
+                "start_time": "2024-05-14T10:00:00Z",
+                "end_time": "2024-05-14T12:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 90,
+                "user_id": 2,
+                "start_time": "2024-05-14T15:00:00Z",
+                "end_time": "2024-05-14T17:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 92,
+                "user_id": 0,
+                "start_time": "2024-05-14T17:00:00Z",
+                "end_time": "2024-05-14T18:00:00Z",
+                "office_id": "Consultorio_3"
+            }
+        ],
+        "date": "27-02-2024"
+    },
+    "wednesday": {
+        "turns": [
+            {
+                "id": 2,
+                "user_id": 0,
+                "start_time": "2024-05-15T09:00:00Z",
+                "end_time": "2024-05-15T10:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 6,
+                "user_id": 2,
+                "start_time": "2024-05-15T15:00:00Z",
+                "end_time": "2024-05-15T17:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 24,
+                "user_id": 0,
+                "start_time": "2024-05-15T10:00:00Z",
+                "end_time": "2024-05-15T11:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 26,
+                "user_id": 4,
+                "start_time": "2024-05-15T09:00:00Z",
+                "end_time": "2024-05-15T10:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 27,
+                "user_id": 2,
+                "start_time": "2024-05-15T08:00:00Z",
+                "end_time": "2024-05-15T10:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 32,
+                "user_id": 4,
+                "start_time": "2024-05-15T10:00:00Z",
+                "end_time": "2024-05-15T13:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 34,
+                "user_id": 2,
+                "start_time": "2024-05-15T15:00:00Z",
+                "end_time": "2024-05-15T19:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 43,
+                "user_id": 4,
+                "start_time": "2024-05-15T19:00:00Z",
+                "end_time": "2024-05-15T20:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 46,
+                "user_id": 4,
+                "start_time": "2024-05-15T15:00:00Z",
+                "end_time": "2024-05-15T16:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 47,
+                "user_id": 4,
+                "start_time": "2024-05-15T11:00:00Z",
+                "end_time": "2024-05-15T13:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 48,
+                "user_id": 2,
+                "start_time": "2024-05-15T13:00:00Z",
+                "end_time": "2024-05-15T14:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 51,
+                "user_id": 2,
+                "start_time": "2024-05-15T20:00:00Z",
+                "end_time": "2024-05-15T21:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 52,
+                "user_id": 2,
+                "start_time": "2024-05-15T20:00:00Z",
+                "end_time": "2024-05-15T21:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 53,
+                "user_id": 0,
+                "start_time": "2024-05-15T13:00:00Z",
+                "end_time": "2024-05-15T14:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 57,
+                "user_id": 0,
+                "start_time": "2024-05-15T15:00:00Z",
+                "end_time": "2024-05-15T18:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 58,
+                "user_id": 0,
+                "start_time": "2024-05-15T09:00:00Z",
+                "end_time": "2024-05-15T11:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 60,
+                "user_id": 4,
+                "start_time": "2024-05-15T19:00:00Z",
+                "end_time": "2024-05-15T21:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 71,
+                "user_id": 2,
+                "start_time": "2024-05-15T11:00:00Z",
+                "end_time": "2024-05-15T14:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 74,
+                "user_id": 2,
+                "start_time": "2024-05-15T11:00:00Z",
+                "end_time": "2024-05-15T14:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 75,
+                "user_id": 0,
+                "start_time": "2024-05-15T18:00:00Z",
+                "end_time": "2024-05-15T21:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 78,
+                "user_id": 4,
+                "start_time": "2024-05-15T14:00:00Z",
+                "end_time": "2024-05-15T16:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 86,
+                "user_id": 4,
+                "start_time": "2024-05-15T14:00:00Z",
+                "end_time": "2024-05-15T15:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 95,
+                "user_id": 0,
+                "start_time": "2024-05-15T13:00:00Z",
+                "end_time": "2024-05-15T17:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 96,
+                "user_id": 4,
+                "start_time": "2024-05-15T20:00:00Z",
+                "end_time": "2024-05-15T21:00:00Z",
+                "office_id": "Consultorio_2"
+            }
+        ],
+        "date": "28-02-2024"
+    },
+    "thursday": {
+        "turns": [
+            {
+                "id": 1,
+                "user_id": 4,
+                "start_time": "2024-05-16T09:00:00Z",
+                "end_time": "2024-05-16T13:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 11,
+                "user_id": 0,
+                "start_time": "2024-05-16T10:00:00Z",
+                "end_time": "2024-05-16T14:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 31,
+                "user_id": 2,
+                "start_time": "2024-05-16T16:00:00Z",
+                "end_time": "2024-05-16T19:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 39,
+                "user_id": 4,
+                "start_time": "2024-05-16T19:00:00Z",
+                "end_time": "2024-05-16T21:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 50,
+                "user_id": 4,
+                "start_time": "2024-05-16T09:00:00Z",
+                "end_time": "2024-05-16T10:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 56,
+                "user_id": 2,
+                "start_time": "2024-05-16T12:00:00Z",
+                "end_time": "2024-05-16T15:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 73,
+                "user_id": 4,
+                "start_time": "2024-05-16T15:00:00Z",
+                "end_time": "2024-05-16T19:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 81,
+                "user_id": 4,
+                "start_time": "2024-05-16T11:00:00Z",
+                "end_time": "2024-05-16T12:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 82,
+                "user_id": 4,
+                "start_time": "2024-05-16T13:00:00Z",
+                "end_time": "2024-05-16T14:00:00Z",
+                "office_id": "Consultorio_2"
+            }
+        ],
+        "date": "29-02-2024"
+    },
+    "friday": {
+        "turns": [
+            {
+                "id": 0,
+                "user_id": 4,
+                "start_time": "2024-05-17T08:00:00Z",
+                "end_time": "2024-05-17T10:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 3,
+                "user_id": 0,
+                "start_time": "2024-05-17T08:00:00Z",
+                "end_time": "2024-05-17T10:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 4,
+                "user_id": 0,
+                "start_time": "2024-05-17T14:00:00Z",
+                "end_time": "2024-05-17T17:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 5,
+                "user_id": 4,
+                "start_time": "2024-05-17T10:00:00Z",
+                "end_time": "2024-05-17T14:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 8,
+                "user_id": 0,
+                "start_time": "2024-05-17T08:00:00Z",
+                "end_time": "2024-05-17T12:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 9,
+                "user_id": 2,
+                "start_time": "2024-05-17T12:00:00Z",
+                "end_time": "2024-05-17T14:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 13,
+                "user_id": 2,
+                "start_time": "2024-05-17T19:00:00Z",
+                "end_time": "2024-05-17T21:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 30,
+                "user_id": 2,
+                "start_time": "2024-05-17T08:00:00Z",
+                "end_time": "2024-05-17T10:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 44,
+                "user_id": 0,
+                "start_time": "2024-05-17T17:00:00Z",
+                "end_time": "2024-05-17T20:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 55,
+                "user_id": 2,
+                "start_time": "2024-05-17T08:00:00Z",
+                "end_time": "2024-05-17T12:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 67,
+                "user_id": 2,
+                "start_time": "2024-05-17T17:00:00Z",
+                "end_time": "2024-05-17T19:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 72,
+                "user_id": 2,
+                "start_time": "2024-05-17T20:00:00Z",
+                "end_time": "2024-05-17T21:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 83,
+                "user_id": 0,
+                "start_time": "2024-05-17T19:00:00Z",
+                "end_time": "2024-05-17T21:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 85,
+                "user_id": 2,
+                "start_time": "2024-05-17T12:00:00Z",
+                "end_time": "2024-05-17T14:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 97,
+                "user_id": 2,
+                "start_time": "2024-05-17T19:00:00Z",
+                "end_time": "2024-05-17T21:00:00Z",
+                "office_id": "Consultorio_3"
+            }
+        ],
+        "date": "01-03-2024"
+    },
+    "saturday": {
+        "turns": [
+            {
+                "id": 21,
+                "user_id": 0,
+                "start_time": "2024-05-18T12:00:00Z",
+                "end_time": "2024-05-18T14:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 25,
+                "user_id": 4,
+                "start_time": "2024-05-18T11:00:00Z",
+                "end_time": "2024-05-18T15:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 42,
+                "user_id": 2,
+                "start_time": "2024-05-18T15:00:00Z",
+                "end_time": "2024-05-18T17:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 65,
+                "user_id": 0,
+                "start_time": "2024-05-18T09:00:00Z",
+                "end_time": "2024-05-18T12:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 66,
+                "user_id": 0,
+                "start_time": "2024-05-18T08:00:00Z",
+                "end_time": "2024-05-18T12:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 69,
+                "user_id": 4,
+                "start_time": "2024-05-18T09:00:00Z",
+                "end_time": "2024-05-18T10:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 76,
+                "user_id": 2,
+                "start_time": "2024-05-18T15:00:00Z",
+                "end_time": "2024-05-18T19:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 84,
+                "user_id": 0,
+                "start_time": "2024-05-18T08:00:00Z",
+                "end_time": "2024-05-18T09:00:00Z",
+                "office_id": "Consultorio_2"
+            }
+        ],
+        "date": "02-03-2024"
+    },
+    "sunday": {
+        "turns": [
+            {
+                "id": 12,
+                "user_id": 0,
+                "start_time": "2024-05-19T13:00:00Z",
+                "end_time": "2024-05-19T16:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 16,
+                "user_id": 0,
+                "start_time": "2024-05-19T17:00:00Z",
+                "end_time": "2024-05-19T20:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 19,
+                "user_id": 0,
+                "start_time": "2024-05-19T19:00:00Z",
+                "end_time": "2024-05-19T21:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 20,
+                "user_id": 2,
+                "start_time": "2024-05-19T20:00:00Z",
+                "end_time": "2024-05-19T21:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 22,
+                "user_id": 2,
+                "start_time": "2024-05-19T10:00:00Z",
+                "end_time": "2024-05-19T11:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 33,
+                "user_id": 4,
+                "start_time": "2024-05-19T11:00:00Z",
+                "end_time": "2024-05-19T15:00:00Z",
+                "office_id": "Consultorio_4"
+            },
+            {
+                "id": 35,
+                "user_id": 0,
+                "start_time": "2024-05-19T17:00:00Z",
+                "end_time": "2024-05-19T18:00:00Z",
+                "office_id": "Consultorio_3"
+            },
+            {
+                "id": 54,
+                "user_id": 4,
+                "start_time": "2024-05-19T13:00:00Z",
+                "end_time": "2024-05-19T14:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 64,
+                "user_id": 2,
+                "start_time": "2024-05-19T14:00:00Z",
+                "end_time": "2024-05-19T17:00:00Z",
+                "office_id": "Consultorio_1"
+            },
+            {
+                "id": 87,
+                "user_id": 0,
+                "start_time": "2024-05-19T09:00:00Z",
+                "end_time": "2024-05-19T13:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 89,
+                "user_id": 4,
+                "start_time": "2024-05-19T14:00:00Z",
+                "end_time": "2024-05-19T17:00:00Z",
+                "office_id": "Consultorio_2"
+            },
+            {
+                "id": 91,
+                "user_id": 2,
+                "start_time": "2024-05-19T13:00:00Z",
+                "end_time": "2024-05-19T17:00:00Z",
+                "office_id": "Consultorio_1"
+            }
+        ],
+        "date": "03-03-2024"
+    }
+}

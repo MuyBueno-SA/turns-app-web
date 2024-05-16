@@ -2,7 +2,9 @@ import { createContext, useEffect, useState } from 'react';
 import './App.css';
 import WeeklySchedule from './WeeklySchedule';
 import { IUser, IUsersDict, get_users_dict } from './Turns/Users';
-import axios from 'axios';
+import { DataService } from './Singletons/DataService';
+import { DataServiceMock } from './Singletons/Mocks/DataServiceMock';
+import { Provider } from './Singletons/Provider';
 
 
 type IBusinessConfig = {
@@ -43,7 +45,7 @@ class BusinessConfig implements IBusinessConfig {
   }
 }
 
-interface IApiBusinessInfo {
+export interface IApiBusinessInfo {
   business_config: IBusinessConfig;
   users: IUser[];
 }
@@ -53,17 +55,26 @@ interface IBusinessInfo {
   users: IUsersDict;
 }
 
+export const mockDataService = true; // flag to turn on and off mocks service
 
 export const businessInfoContext = createContext<IBusinessInfo>({} as IBusinessInfo);
-
+export const providerServiceContext = createContext<Provider>({} as Provider);
 
 function App() {
   const [businessInfo, setBusinessInfo] = useState<IBusinessInfo | null>(null);
+  const [providerService, setProviderService] = useState<Provider | null>(null);
 
     useEffect(() => {
         const fetchBusinessInfo = async () => {
-            const response = await axios.get('http://127.0.0.1:5000/business_info');
-            const api_business_info: IApiBusinessInfo = response.data;
+            const providerService = new Provider();
+            setProviderService(providerService);
+            const dataService = providerService.getSingletonInstance({
+              provide: DataService,
+              useClass: mockDataService ? DataServiceMock : DataService
+            });
+            
+            const response = await dataService.getBussinessInfo();
+            const api_business_info: IApiBusinessInfo = response;
             const users_dict = get_users_dict(api_business_info.users);
 
             const business_info: IBusinessInfo = {
@@ -78,16 +89,18 @@ function App() {
         });
     }, []);
 
-    if (businessInfo === null) {
+    if (businessInfo === null || providerService === null) {
         return <div>Loading Business Info...</div>;
     }
     console.log(businessInfo);
 
   return (
     <>
-      <businessInfoContext.Provider value={businessInfo}>
-        <WeeklySchedule />
-      </businessInfoContext.Provider>
+      <providerServiceContext.Provider value={providerService}>
+        <businessInfoContext.Provider value={businessInfo}>
+          <WeeklySchedule />
+        </businessInfoContext.Provider>
+      </providerServiceContext.Provider>
     </>
   );
 }
