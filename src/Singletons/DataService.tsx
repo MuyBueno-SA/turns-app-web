@@ -7,8 +7,10 @@ export class DataService implements IDataService{
 
     constructor() {}
     
-    getWeek(): Promise<IWeekTurns> {
-        throw new Error("Method not implemented.");
+    getWeek(day: string): Promise<IWeekTurns> {
+        return axios.get('http://127.0.0.1:5000/turns/get_week', {
+            params: { day }
+        }).then(response => response.data);
     }
     getBussinessInfo(): Promise<IApiBusinessInfo> {
         return axios.get<IApiBusinessInfo>('http://127.0.0.1:5000/business_info').then(response => response.data);

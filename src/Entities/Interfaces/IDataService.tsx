@@ -2,6 +2,6 @@ import { IApiBusinessInfo } from "../../App";
 import { IWeekTurns } from "../../WeeklySchedule";
 
 export interface IDataService {
-    getWeek(): Promise<IWeekTurns>;
+    getWeek(day: string): Promise<IWeekTurns>;
     getBussinessInfo(): Promise<IApiBusinessInfo>;
 }

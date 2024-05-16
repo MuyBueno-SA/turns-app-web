@@ -5,7 +5,7 @@ import { IWeekTurns } from "../../WeeklySchedule";
 
 export class DataServiceMock implements IDataService {
 
-    getWeek(): Promise<IWeekTurns> {
+    getWeek(day: string): Promise<IWeekTurns> {
         const mockedHttpCall = axios.get<IWeekTurns>('./assets/mocks/get_weeks.response.mock.json').then(response => response.data)
 
         return mockedHttpCall;

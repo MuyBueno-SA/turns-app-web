@@ -227,7 +227,7 @@ export default function WeeklySchedule() {
                 useClass: mockDataService ? DataServiceMock : DataService
               });
 
-            const response = await dataService.getWeek();
+            const response = await dataService.getWeek(formattedDate);
             
             // const response = await axios.get('http://127.0.0.1:5000/turns/get_week', {
             //     params: { day: formattedDate }
