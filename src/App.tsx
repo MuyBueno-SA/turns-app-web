@@ -1,6 +1,6 @@
-import React, { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import './App.css';
-import WeeklySchedule, { INamedUser } from './WeeklySchedule';
+import WeeklySchedule from './WeeklySchedule';
 import { IUser, IUsersDict, get_users_dict } from './Turns/Users';
 import axios from 'axios';
 

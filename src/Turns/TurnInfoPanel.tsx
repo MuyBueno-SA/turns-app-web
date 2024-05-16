@@ -8,7 +8,7 @@ import { businessInfoContext } from "../App";
 // handleClose is a function that will be called when the offcanvas is closed
 export default function TurnInfoPanel({turn, show, handleClose}: {turn: ITurn, show: boolean, handleClose: () => void}){
     const business_info = useContext(businessInfoContext);
-    const user = business_info.users[turn.user.id];
+    const user = business_info.users[turn.user_id];
     
     // Day as string Monday, 17 of February 2024
     const day = new Date(turn.start_time).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });

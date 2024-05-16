@@ -1,7 +1,6 @@
 import { SyntheticEvent, useContext, useState } from "react";
 import { Button, Form, FormSelect, Offcanvas } from "react-bootstrap";
 import UserInfo, { IUser } from "./Users";
-import axios from "axios";
 import { businessInfoContext } from "../App";
 import { ITurn, get_office_name, timeHoursAsInt } from "../WeeklySchedule";
 
@@ -88,7 +87,7 @@ function UserPicker({selectedUser, setSelectedUser}: {selectedUser: IUser | null
     });
 
     const handleUserSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const user = business_info.users[e.target.value];
+        const user = business_info.users[Number(e.target.value)];
         setSelectedUser(user);
     };
 

@@ -1,15 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 
-
-export type INamedUser = {
-    id: string;
-    name: string;
-}
-
 export type IUser = {
-    id: string;
+    id: number;
     name: string;
     email: string;
     phone: string;
@@ -21,13 +13,13 @@ export type IUsersList = {
 }
 
 export type IUsersDict = {
-    [id: string]: IUser;
+    [id: number]: IUser;
   }
 
 
 export function get_users_dict(users: IUser[]): IUsersDict {
 
-    var users_dict: { [id: string]: IUser } = {};
+    var users_dict: { [id: number]: IUser } = {};
     users.forEach((user) => {
         users_dict[user.id] = user;
     });
