@@ -55,8 +55,7 @@ interface IBusinessInfo {
   users: IUsersDict;
 }
 
-export const mockDataService = true;
-
+export const mockDataService = true; // flag to turn on and off mocks service
 
 export const businessInfoContext = createContext<IBusinessInfo>({} as IBusinessInfo);
 export const providerServiceContext = createContext<Provider>({} as Provider);
