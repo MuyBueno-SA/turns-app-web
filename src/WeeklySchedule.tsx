@@ -9,16 +9,11 @@ import { DataService } from './Singletons/DataService';
 import { DataServiceMock } from './Singletons/Mocks/DataServiceMock';
 
 
-export interface INamedUser {
-    id: string;
-    name: string;
-}
-
 export interface ITurn {
-    idx: string;
-    start_time: string;
-    end_time: string;
-    user: INamedUser;
+    id: number | null;
+    start_time: string;  // Format 2024-02-26T10:00:00Z
+    end_time: string;    // Format 2024-02-26T10:00:00Z
+    user_id: number;
     office_id: string;
 }
 
@@ -32,34 +27,40 @@ export interface IWeekTurns {
 }
 
 
-// Convert string "2024-02-26 10:00:00" to time integer 10
+// Convert string "2024-02-26T10:00:00Z0" to time integer 10
 export function timeHoursAsInt(time: string): number {
-    return parseInt(time.split(' ')[1].split(':')[0]);
+    return parseInt(time.split('T')[1].split(':')[0]);
 }
-
 
 function TurnObject({ turn }: { turn: ITurn }) {
 
     const [show, setShow] = useState(false);
+    const business_info = useContext(businessInfoContext);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    // Convert string "2024-02-26 10:00:00" to time string "10:00"
-    const start_time = new Date(turn.start_time);
-    const start_time_str = start_time.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    // Convert string "2024-02-26T10:00:00Z0" to time string "10:00"
+    const startDateParts = turn.start_time.split(/[T:]/);
+    const startHours = parseInt(startDateParts[1]);
+    const startMinutes = parseInt(startDateParts[2]);
+    const startTimeString = `${startHours.toString().padStart(2, '0')}:${startMinutes < 10 ? '0' : ''}${startMinutes}`;
 
-    const end_time = new Date(turn.end_time);
-    const end_time_str = end_time.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
 
+    const endDateParts = turn.end_time.split(/[T:]/);
+    const endHours = parseInt(endDateParts[1]);
+    const endMinutes = parseInt(endDateParts[2]);
+    const endTimeString = `${endHours.toString().padStart(2, '0')}:${endMinutes < 10 ? '0' : ''}${endMinutes}`;
+
+    // TODO Use business_info to get start and end hours
     const time_range = 21 - 8; // 13 hours
 
     // Start time as hours integers
-    const start_time_hours = start_time.getHours();
+    const start_time_hours = timeHoursAsInt(turn.start_time);
     const position_start = (start_time_hours - 8) * 100 / time_range;
 
     // End time as hours integer
-    const end_time_hours = end_time.getHours();
+    const end_time_hours = timeHoursAsInt(turn.end_time);
     const position_end = (end_time_hours - 8) * 100 / time_range;
 
     const style = {
@@ -68,21 +69,21 @@ function TurnObject({ turn }: { turn: ITurn }) {
     };
 
     let turn_class = 'turn';
-    if (turn.user.id === '') {
+    if (turn.id === null) {
         turn_class += ' free';
     }
-    
+
     return (
         <>
-            <div className={turn_class} key={turn.idx} style={style} onClick={handleShow}>
-                <p className='time'>{start_time_str} - {end_time_str}</p>
-                <p className='user'>{turn.user.name}</p>
+            <div className={turn_class} key={turn.id} style={style} onClick={handleShow}>
+                <p className='time'>{startTimeString} - {endTimeString}</p>
+                <p className='user'>{business_info.users[turn.user_id] ? business_info.users[turn.user_id].name : ''}</p>
             </div>
             {
-                turn.user.id !== '' ? <TurnInfoPanel turn={turn} show={show} handleClose={handleClose}/> : null
+                turn.id !== null ? <TurnInfoPanel turn={turn} show={show} handleClose={handleClose} /> : null
             }
             {
-                turn.user.id === '' ? <NewTurnPanel turn={turn} show={show} handleClose={handleClose}/> : null
+                turn.id === null ? <NewTurnPanel turn={turn} show={show} handleClose={handleClose} /> : null
             }
         </>
     )
@@ -91,12 +92,8 @@ function TurnObject({ turn }: { turn: ITurn }) {
 
 function calculate_used_modules(turn: ITurn): number[] {
 
-    // Get round hours involved in turn
-    const start_time = new Date(turn.start_time);
-    const end_time = new Date(turn.end_time);
-
-    const start_hour = start_time.getHours();
-    const end_hour = end_time.getHours();
+    const start_hour = timeHoursAsInt(turn.start_time)
+    const end_hour = timeHoursAsInt(turn.end_time)
 
     const used_modules = Array.from({ length: end_hour - start_hour }, (_, i) => i + start_hour);
 
@@ -116,16 +113,15 @@ function calculate_all_used_modules(day_turns: IDayTurns): number[] {
 }
 
 
-// Convert date to string "2024-02-26 10:00:00"
-function format_date( date: Date ): string {
-    const formatted_date: string = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
-    return formatted_date;
+// Convert date to string "2024-02-26T10:00:00Z"
+function format_date(date: Date): string {
+    return date.toISOString();
 }
 
 
 
 function process_day_turns(day_turns: IDayTurns, office: string) {
-
+    // TODO Use business_info to get start and end hours
     const day_start = 8;
     const day_end = 21;
     const all_modules = Array.from({ length: day_end - day_start }, (_, i) => i + day_start);
@@ -134,18 +130,15 @@ function process_day_turns(day_turns: IDayTurns, office: string) {
     const free_modules = all_modules.filter((module) => !all_used_modules.includes(module));
     const free_turns: ITurn[] = free_modules.map((module) => {
         // Create start time with date as "dd.mm.yyyy" and time as 10
-        const date_parts = day_turns.date.split('.');
-        const start_time = new Date(Number(date_parts[2]), Number(date_parts[1]) - 1, Number(date_parts[0]));
-        start_time.setHours(module);
-
-        const end_time = new Date(Number(date_parts[2]), Number(date_parts[1]) - 1, Number(date_parts[0]));
-        end_time.setHours(module + 1);
+        const date_parts = day_turns.date.split('-');
+        const start_time = new Date(Date.UTC(Number(date_parts[2]), Number(date_parts[1]) - 1, Number(date_parts[0]), module));
+        const end_time = new Date(Date.UTC(Number(date_parts[2]), Number(date_parts[1]) - 1, Number(date_parts[0]), module + 1));
 
         return {
-            idx: '',
-            start_time: format_date( start_time ),
-            end_time: format_date( end_time ),
-            user: {id: '', name: ''},
+            id: null,
+            start_time: start_time.toISOString(),
+            end_time: end_time.toISOString(),
+            user_id: -1,
             office_id: office
         }
     });
@@ -165,7 +158,7 @@ function WeekDay({ day_name, day_turns, office }: { day_name: string, day_turns:
     const capitalized_day_name = day_name.charAt(0).toUpperCase() + day_name.slice(1);
 
     // Date as "dd.mm.yyyy" to "26 / 02 / 2024"
-    const date_parts = day_turns.date.split('.');
+    const date_parts = day_turns.date.split('-');
     const formatted_date = `${date_parts[0]} / ${date_parts[1]} / ${date_parts[2]}`;
 
     return (
@@ -177,19 +170,21 @@ function WeekDay({ day_name, day_turns, office }: { day_name: string, day_turns:
             </div>
         </div>
     )
-    
-  }
+
+}
 
 export function get_office_name(office_id: string): string {
     return office_id.replace(/_/g, ' ');
-} 
+}
 
 
 function OfficeWeekSchedule({ turns, office }: { turns: IWeekTurns, office: string }) {
     const office_turns: IWeekTurns = {};
     Object.keys(turns).forEach((key) => {
-        const day_turns = turns[key];
-        console.log('key', key);
+        var day_turns = turns[key];
+        if (day_turns.turns === null) {
+            day_turns.turns = [];
+        }
         const office_day_turns = {
             date: day_turns.date,
             turns: day_turns.turns.filter((turn) => turn.office_id === office)
@@ -202,15 +197,15 @@ function OfficeWeekSchedule({ turns, office }: { turns: IWeekTurns, office: stri
     });
 
     const office_name = get_office_name(office);
-    
+
     return (
         <>
-        <Accordion.Item eventKey={office}>
-            <Accordion.Header>{office_name}</Accordion.Header>
+            <Accordion.Item eventKey={office}>
+                <Accordion.Header>{office_name}</Accordion.Header>
                 <Accordion.Body>
                     {week_days}
                 </Accordion.Body>
-        </Accordion.Item>
+            </Accordion.Item>
         </>
     )
 }
@@ -257,15 +252,15 @@ export default function WeeklySchedule() {
             <h1>Weekly Schedule</h1>
             <p>{formattedDate}</p>
             <Accordion>
-            {
-                business_info.business.offices.map((office) => 
+                {
+                    business_info.business.offices.map((office) =>
                     (
                         <div className="weekly_schedule">
-                            <OfficeWeekSchedule turns={data} office={office}/>
+                            <OfficeWeekSchedule turns={data} office={office} />
                         </div>
                     )
-                )      
-            }
+                    )
+                }
             </Accordion>
         </div>
     )
